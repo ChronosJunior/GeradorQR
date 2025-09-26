@@ -6,8 +6,19 @@ import os
 def tratar_url(arg):
     if arg.find("https://") == -1 or arg.find("http://") == -1:
         arg = "https://"+arg
-    if arg.find(".com") == -1 or arg.find(".org") == -1:
+    if arg.find(".") == -1:
         arg = arg + ".com"
+    return arg
+
+def tratar_texto(arg):
+    print(arg)
+    index_ponto = arg.find(".")
+    index_barra = arg.find("/")
+    if index_barra != -1:
+        arg=arg[0:index_barra]
+    if index_ponto != -1:
+        arg=arg[0:index_ponto]
+    print(arg)
     return arg
 
 def testar_url(link):
@@ -33,6 +44,7 @@ def main():
         if sys.argv[2] == "link":
             url = tratar_url(conteudo)
             testar_url(url)
+        conteudo=tratar_texto(conteudo)
         gerar_qr_code(conteudo, url)
     else:
         print(f"Uso {sys.argv[0]} <conteudo> <tipo (escolher entre link, texto)>")
