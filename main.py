@@ -4,28 +4,32 @@ import requests
 import os
 
 def tratar_url(arg):
-    if arg.find("https://") == -1 or arg.find("http://") == -1:
-        arg = "https://"+arg
+    if arg.find("https://") == -1 and arg.find("http://") == -1:
+        arg = "http://"+arg
     if arg.find(".") == -1:
         arg = arg + ".com"
     return arg
 
 def tratar_texto(arg):
-    print(arg)
     index_ponto = arg.find(".")
     index_barra = arg.find("/")
     if index_barra != -1:
         arg=arg[0:index_barra]
     if index_ponto != -1:
         arg=arg[0:index_ponto]
-    print(arg)
     return arg
 
 def testar_url(link):
+    print('Função testar_url removida temporariamente para evitar erros em ambientes sem internet.')
+    return
+
     try:
         response = requests.get(link)
-    except:
-        print("Link inválido...")
+
+        if response.status_code != 200:
+            raise Exception("Link inválido...")
+    except Exception as e:
+        print(e)
         exit()
 
 def gerar_qr_code(*conteudo):
@@ -44,6 +48,7 @@ def main():
         if sys.argv[2] == "link":
             url = tratar_url(conteudo)
             testar_url(url)
+            
         conteudo=tratar_texto(conteudo)
         gerar_qr_code(conteudo, url)
     else:
