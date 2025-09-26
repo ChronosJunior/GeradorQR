@@ -14,7 +14,7 @@ _(Opcional)_ Recomendamos a utilização de ambientes virtuais para uma instala�
 
     cd GeradorQR
     python3 -m venv .venv
-    source venv/bin/activate
+    source .venv/bin/activate
 
 Agora instale as bibliotecas necessárias:
 
