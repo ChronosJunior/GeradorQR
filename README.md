@@ -1,18 +1,19 @@
 # Gerador automático de QR Code
+
 ## Uso
 
 ### Instalação:
 
-primeiro clone o repositório 
+primeiro clone o repositório
 
     git clone https://github.com/ChronosJunior/GeradorQR.git
 
 Com o python já instalado em seu computador, instalaremos os pré requisitos.
 
-*(Opcional)* Recomendamos a utilização de ambientes virtuais para uma instalação mais limpa:
+_(Opcional)_ Recomendamos a utilização de ambientes virtuais para uma instalação mais limpa:
 
-    mkdir venv
-    python3 -m venv venv
+    cd GeradorQR
+    python3 -m venv .venv
     source venv/bin/activate
 
 Agora instale as bibliotecas necessárias:
